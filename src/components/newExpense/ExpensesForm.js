@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../../UI/input/Input";
 import Button from "../../UI/button/Button";
-import "./ExpenseForm.css";
+import styled from "styled-components";
 
 const ExpensesForm = ({ onClick, addExpenseHandler }) => {
   const [inputText, setInputText] = useState("");
@@ -36,8 +36,8 @@ const ExpensesForm = ({ onClick, addExpenseHandler }) => {
     setInputNumber("");
   }
   return (
-    <form onSubmit={submitHandler} className="header">
-      <div className="inputDiv">
+    <form onSubmit={submitHandler}>
+      <FormContainer className="inputDiv">
         <div>
           <Input
             marginBottom="20px"
@@ -62,7 +62,7 @@ const ExpensesForm = ({ onClick, addExpenseHandler }) => {
             onChange={getNumberInput}
           />
         </div>
-      </div>
+      </FormContainer>
 
       <div className="btnDiv">
         <Button marginRight="20px" onClick={onClick}>
@@ -75,3 +75,13 @@ const ExpensesForm = ({ onClick, addExpenseHandler }) => {
 };
 
 export default ExpensesForm;
+
+const FormContainer = styled.div`
+  display: flex;
+  gap: 30px;
+  .btnDiv {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+`;
